@@ -1,0 +1,47 @@
+#light-bulb {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: gray;
+    margin: 20px auto;
+    box-shadow: 0 0 10px #00000055;
+    transition: background-color 0.3s, box-shadow 0.3s, filter 0.3s;
+    cursor: pointer; /* מאפשר ללחוץ על העיגול */
+}
+
+.on {
+    background-color: yellow;
+    box-shadow: 0 0 30px 10px yellow;
+}
+
+.off {
+    background-color: gray;
+    box-shadow: none;
+}
+
+.brightness-100 {
+    filter: brightness(100%);
+}
+
+.brightness-75 {
+    filter: brightness(75%);
+}
+
+.brightness-50 {
+    filter: brightness(50%);
+}
+
+.brightness-25 {
+    filter: brightness(25%);
+}
+
+body {
+    text-align: center;
+    font-family: Arial;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+

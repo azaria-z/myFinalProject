@@ -1,0 +1,15 @@
+# version: "3.1"
+
+
+# rules:
+# - rule:
+#   steps:
+#   - action: utter_ask_help
+#   - intent: affirm
+#   - action: utter_ask_what_help
+
+# - rule: after form submission no help needed
+#   steps: 
+#   - action: utter_ask_help
+#   - intent: deny
+#   - action: utter_goodbye

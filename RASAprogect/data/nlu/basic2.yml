@@ -1,0 +1,155 @@
+
+    # לא התיחסתי לשינוי שם
+version: "3.1"
+
+
+
+# קבלת נתונים על המכשיר
+nlu:
+
+- intent: get_all
+  examples: |
+    - Show me all settings of the [AC](device)
+    - Give me the full [AC](device) status
+    - What are all the parameters of the [air conditioner](device)?
+
+- intent: get_temperature
+  examples: |
+    - What is the current temperature of the [air conditioner](device)?
+    - What temperature is the [AC](device) set to?
+    - Tell me the [air conditioner](device) temperature
+    - How cool is the [air conditioner](device) set?
+
+
+- intent: get_fanSpeed
+  examples: |
+    - What is the fan speed of the [AC](device)?
+    - How fast is the [air conditioner](device) fan?
+    - Tell me the [AC](device) fan speed
+    - What setting is the [air conditioner](device) fan on?
+
+- intent: get_blinds
+  examples: |
+    - What is the blinds position of the [AC](device)?
+    - Where are the [air conditioner](device) blinds set?
+    - Tell me the blinds status
+    - Are the [AC](device) blinds open or closed?
+    - What is the blinds position
+
+- intent: get_display
+  examples: |
+    - Is the display of the [air conditioner](device) on?
+    - What is the [AC](device) display status?
+    - Is the [air conditioner](device)'s screen active?
+    - Can I see the display on the [AC](device)?
+
+- intent: get_louverAngle
+  examples: |
+    - What is the louver angle of the [AC](device)?
+    - At what angle are the [air conditioner](device) louvers?
+    - Tell me the air flow direction of the [AC](device)
+    - How are the [AC](device) vents directed?
+
+
+# דולק או כבוי
+# יש לשנות בתעוד על המכשיר
+- intent: get_status
+  examples: |
+    - what's the status of the [air conditioner](device)?
+    - is the [light](device) on in the [kitchen](room)?
+    - is the [oven](device) still running?
+    - is the [coffee machine](device) on?
+    - is the [microwave](device) off?
+    - Is the [air conditioner](device) on?
+    - What is the current state of the [AC](device)?
+    - Is the [AC](device) running?
+    - Tell me if the [air conditioner](device) is off or on
+
+
+# שאלה על ההגדרות של המכשיר
+# פה לא פיצלתי במידת הצורך אפצל
+- intent: get_temperature
+  examples: |
+    - what is the temperature of the [air conditioner](device)?
+    - is the [heater](device) set to [25] degrees?
+    - what's the current temperature?
+    - how hot is the [bedroom](room) [heater](device)?
+    - what's the temperature setting of the [AC](device)?
+    - what temperature is the [living room](room) [AC](device) set to?
+
+
+- intent: get_color
+  examples: |
+    - what is the color of the [lamp](device)?
+    - is the [light](device) set to blue?
+    - what's the current color of the [kitchen](room) [lamp](device)?
+    - what color is the [lamp](device)?
+    - is the [living room](room) [light](device) purple?
+    - show me the color of the [bedroom](room) [light](device)
+
+
+- intent: get_brightness
+  examples: |
+    - what's the current brightness of the [lamp](device)?
+    - how bright is the [living room](room) [light](device)?
+    - how bright is the [lamp](device)?
+    - what's the brightness level of the [kitchen](room) [lamp](device)?
+    - is the [light](device) too dim?
+    - check the brightness of the [bedroom](room) [light](device)
+    - what brightness is the [lamp](device) set to?
+
+# קבלת המצב של המכשיר
+- intent: get_mode
+  examples: |
+    - what mode is the [air conditioner](device) in?
+    - is the [vacuum](device) in silent mode?
+    - which mode is the [fan](device) currently using?
+    - what mode is the [vacuum](device) in?
+    - what is the [coffee machine's](device) current mode?
+
+- intent: get_name
+  examples: |
+    - What is the name of the [light](device) in the [living room](room)?
+    - What's this [AC](device) called?
+    - Remind me how I named the [vacuum](device).
+    - What's the name of the [air conditioner](device) in the [bedroom](room)?
+    - Do you remember how I called the [light](device)?
+    
+
+# קבלת כל סוגי הקפה
+- intent: get_coffeeType
+  examples: |
+    - What types of coffee can I make?
+    - Show me the available coffee options
+    - List all coffee types
+    - What coffee drinks can I choose from?
+    - Give me the coffee menu
+ 
+ # לא טופל
+ # בכל ה-3 האחרונים
+- intent: get_ingredientCoffee
+  examples: |
+    - What ingredients are in a [latte](coffee)?
+    - Show me what’s inside a [cappuccino](coffee)?
+    - What does a [mocha](coffee) contain?
+    - Tell me the ingredients for an [espresso](coffee)?
+    - What is used to make a [flat white](coffee)?
+
+- intent: get_ingredientsStatus
+  examples: |
+    - Show me the current ingredient levels
+    - What is the status of all ingredients?
+    - How much of each ingredient is left?
+    - Give me the ingredient stock status
+    - Display the machine’s ingredient levels
+
+- intent: get_ingredient
+  examples: |
+    - How much [milk](setting) is left?
+    - What is the amount of [coffee beans](setting)?
+    - Show the level of [water](setting)
+    - Do we have enough [sugar](setting)?
+    - Check the amount of [chocolate syrup](setting)
+
+
+

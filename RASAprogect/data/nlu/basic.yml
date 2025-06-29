@@ -1,0 +1,625 @@
+
+# אימון של זיהוי לפי פעולות
+# לשים לב לחלק את הכונות נכון
+
+version: "3.1"
+
+nlu:
+- intent: turn_on
+  examples: |
+    - turn on the [light](device)
+    - switch on the [air conditioner](device)
+    - activate the [lamp](device) in the [living room](room)
+    - power on the [air purifier](device)
+    - turn on the [microwave](device)
+    - activate the [coffee machine](device)
+    - Start the [coffee machine](device)
+    - Switch on the [coffee maker](device)
+    - Power up the [coffee machine](device) in the [kitchen](room)
+    - please switch the [AC](device) on
+    - can you turn the [AC](device) on in the [living room](room)?
+    - start the [air conditioner](device)
+
+- intent: turn_off
+  examples: |
+    - turn off the [light](device)
+    - switch off the [air conditioner](device) in the [kitchen](room)
+    - deactivate the [oven](device)
+    - turn off the [lamp](device) in the [bedroom](room)
+    - stop the [microwave](device)
+    - shut down the [air purifier](device)
+    - switch off the [coffee machine](device)
+    - Stop the [coffee maker](device)
+    - Shut down the [coffee machine](device)
+    - switch the [AC](device) off
+    - please turn off the [air conditioner](device) in the [bedroom](room)
+    - stop the [AC](device) now
+
+# יכול להיות כאן ערך ויכול להיות שלא
+- intent: increase_brightness
+  examples: |
+    - increase the brightness
+    - make it brighter
+    - make the [lamp](device) brighter
+    - raise the brightness
+    - make the [light](device) brighter
+    - brighten the [hallway](room) [lamp](device)
+
+- intent: decrease_brightness
+  examples: |
+    - lower the  brightness
+    - decrease the brightness of the [lamp](device)
+    - dim the lights
+    - make it less bright
+    - reduce the brightness level
+    - set the brightness lower
+    - can you turn down the brightness?
+
+- intent: increase_temperature
+  examples: |
+    - increase the [AC](device) [temperature](setting) by [2](value) degrees
+    - raise the [temperature](setting) in the room
+    - turn up the [AC](device) [temperature](setting)
+    - raise the [heater](device) [temperature](setting) by [5](value)
+    - increase [temperature](setting) by [1](value) degree
+
+- intent: decrease_temperature
+  examples: |
+    - decrease the [AC](device) [temperature](setting) by [3](value) degrees
+    - lower the [temperature](setting) in the [living room](room)
+    - make it cooler by lowering the [AC](device) [temperature](setting)
+    - turn down the [AC](device) [temperature](setting)
+    - cool the [room](room) down
+    - reduce the [heater](device) [temperature](setting) by [4](value)
+
+
+- intent: change_temperature
+  examples: |
+    - set the [temperature](setting) to [22](value) degrees
+    - set the [oven](device) [temperature](setting) to [180](value) degrees
+    - set it to [23](value)
+    - change [temperature](setting) to [21](value)
+    - set [AC](device) [temperature](setting) in the [bedroom](room) to [20](value)
+    - change the [temperature](setting)
+
+
+- intent: change_brightness
+  examples: |
+    - change the [brightness](setting) to [70](value)
+    - adjust [brightness](setting) to [50](value)
+    - set the [light](device) [brightness](setting) to [20](value)
+    - change the [brightness](setting) level to [60](value)
+    - make the [brightness](setting) [100](value)
+    - I want the [brightness](setting) at [90](value)
+    - i want to change the [brightness](setting) of the [lamp](device) to [80](value)
+
+
+- intent: change_color
+  examples: |
+    - set the [light](device) to [blue](value)
+    - change the [light](device) [color](setting) to [green](value) in the [bedroom](room)
+    - turn the [light](device) [red](value)
+    - I want the [living room](room) [light](device) to be [purple](value)
+    - make the [lamp](device) [yellow](value)
+    - switch the [color](setting) of the [light](device) to [pink](value)
+    - change the [light](device) [color](setting) to [green](value) in the [bedroom](room)
+    - change the [color](setting)
+
+
+
+
+# יכול להיות שאין פה הגדרה   
+- intent: change_mode
+  examples: |
+    - set the [AC](device) to [cool](value) [mode](setting)
+    - change the [air conditioner](device) to heating
+    - switch the [AC](device) [mode](setting) to fan
+    - I want the [AC](device) on [dry](value) [mode](setting)
+    - set [AC](device) [mode](setting) to [auto](value)
+    - Put the [air conditioner](device) in [auto](value) [mode](setting)
+    - set [mode](setting)
+    - change [mode](setting)
+    - [cool](value)
+    - [heat](value)
+    - [dry](value)
+    - [fan](value)
+    - [auto](value)
+
+
+- intent: display_on
+  examples: |
+    - Turn on the [AC](device) display
+    - Enable the display of the [air conditioner](device)
+    - Show the [AC](device) screen
+    - Activate [air conditioner] display
+
+- intent: display_off
+  examples: |
+    - Turn off the [AC](device) display
+    - Disable the [air conditioner](device) display
+    - Hide the [AC](device) screen
+    - Deactivate the display of the [air conditioner](device)
+
+
+- intent: change_fanSpeed
+  examples: |
+    - Set the [fan speed](setting) of the [AC](device) to [high](value)
+    - Change [air conditioner](device) [fan speed](setting) to [low](value)
+    - Adjust the [fan](device) of the [air conditioner](device)
+    - Switch the [AC](device) [fan speed](setting) to [medium](value)
+    - Set the [fan speed](setting) to [auto](value)
+    - [low](value)
+
+- intent: change_louverAngle
+  examples: |
+    - Adjust the [louver angle](setting) of the [air conditioner](device)
+    - Set the [AC](device) [louver angle](setting) to [45](value) degrees
+    - Change the [air conditioner](device)'s [louver direction](setting)
+    - Rotate the [louver](setting) to [30](value) degrees
+    - Make the [air conditioner](devicchae) blow air at a [60](value) degree angle
+    - i want the [AC](device) [louver angle](setting) to be [open](value)
+    - i want to change the [louver angle](setting) 
+
+- intent: change_blinds
+  examples: |
+    - Change the [AC](device) [blinds position](setting)
+    - Move the [air conditioner](device) [blinds](setting)
+    - Set [blinds](setting) to [open](value)
+    - Set the [air conditioner](device) [blinds](setting) to [close](value)
+    - Change the [AC](device) [blinds](setting) to [half](value)
+    - Put the [AC](device) [blinds](setting) on [swing](value) mode
+    - Set the [air conditioner](device) to [memory](value) [blinds position](setting)
+    - Turn the [AC](device) [blinds](setting) to [auto](value)
+
+
+
+
+
+
+# להוסיף מרכיב למכונת קפה
+- intent: add_ingredient
+  examples: |
+    - Add [20](value) ml of [water](setting) to the [coffee machine](device)
+    - Please add [50](value) grams of [coffee](setting)
+    - Add [30](value) ml of [milk](setting)
+    - Insert [100](value) milliliters of [water](setting)
+    - Fill the machine with [200](value) ml of [milk](setting)
+    - Add some [coffee](setting)
+    - Put [water](setting) in the [coffee machine](device)
+    - Refill with [milk](setting)
+    - Add more [coffee](setting)
+    - Can you add [250](value) ml of [water](setting)?
+    - Please refill the [milk](setting) container with [300](value) ml
+    - Load [beans](setting) into the [coffee machine](device)
+    - Add [40](value) grams of [ground coffee](setting)
+    - Add [150](value) ml of [milk](setting)
+    - Pour [100](value) ml of [water](setting) into the tank
+    - I need to add [coffee](setting) to the [coffee machine](device)
+    - add [milk](setting)
+    - add [water](setting)
+
+
+- intent: reduce_ingredient
+  examples: |
+    - reduce [milk](setting) by [20](value) ml
+    - decrease [coffee](setting) to [10](value) grams
+    - lower the [water](setting) amount to [50](value) ml
+    - take out [15](value) ml of [milk](setting)
+    - I want less [sugar](setting), make it [1](value) teaspoon
+    - remove [30](value) ml from the [water](setting)
+    - can you reduce the [coffee](setting) to [8](value) grams
+    - subtract [10](value) ml from the [milk](setting)
+    - change [milk](setting) from [100](value) ml to [50](value) ml
+    - make the [water](setting) just [40](value) ml
+
+
+# במכונת קפה יש דברים שמיוחדים רק אליה
+# לכן פה אני לא צריכה לקבל את שם המכשיר
+
+- intent: make_coffee
+  examples: |
+    - I want to make a [latte](coffee)
+    - Make me a [cappuccino](coffee)
+    - Please prepare a cup of [espresso](coffee)
+    - Brew a [flat white](coffee)
+    - Can you make a [mocha](coffee)?
+    - Make me a [coffee](setting) with [milk](coffee)
+    - Brew an [espresso](coffee)
+    - Prepare a [black coffee](coffee)
+    - Start making a [cappuccino](coffee)
+    - Make a [double espresso](coffee)
+    - make me a coffee
+    - i want to drink a coffee
+    - can you make a coffee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# nlu:
+# #פעולה על המכשיר עצמו
+# - intent: control_device
+#   examples: |
+#     # פעולות כלליות
+#     - [turn on](action) the [light](device) in the [living room](room)
+#     - [turn off](action) the [light](device) in the [living room](room)
+
+    
+#     # שליטה במאפיינים
+#     - [change](action) the [color](property) of the [lamp](device) to [blue](value)
+#     - [dim](action) the [light](device) to [30](value)
+#     - [make](action) the [light](device) [red](value)
+#     - [adjust](action) the [lamp](device) to [white](value)
+#     - [set](action) the [color](property) of the [light](device) to [green](value)
+#     - [set](action) the [color](property) to [yellow](value)
+#     - [increase](action) the [brightness](property) of the [lamp](device) to [80](value)
+#     - [change](action) the [color](property) of the [light](device) to [purple](value)
+#     - [make](action) the [light](device) [white](value)
+#     - [set](action) the [brightness](property) to [100](value)
+#     - [set](action) the [color](property) to [red](value)
+#     - [switch off](action) the [lamp](device)
+#     - [trun on](action) the [light](device)
+
+
+# #שאלות על המצב של המכשיר
+# - intent: get_device_status
+#   examples: |
+#     - can you tell me if the [light](device) is [on](property)?
+#     - what's the [status](property) of the [light](device)?
+#     - how [bright](property) is the [lamp](device)?
+#     - what [color](property) is the [light](device)?
+#     - Is the [lamp](device) [working](property)?
+#     - What's the [status](property) of the [light](device)?
+#     - Is the [living room](room) [light](device) [off](property)?
+#     - is the [light](device) [blue](property)?
+#     - is the [lamp](device) [working](property)?
+#     - is the [bedroom](room) [lamp](device) [off](property)?
+#     - is the [light](device) [turned on](property)?
+#     - is the [lamp](device) [active](property)?
+#     - what's the [color](property) of the [lamp](device)?
+#     - what [brightness](property) is set on the [lamp](device)?
+#     - is the [light](device) [on](property)?
+#     - is the [lamp](device) [off](property)?
+#     - what's the [status](property) of the [living room](room) [light](device)?
+#     - how [bright](property) is the [light](device)?
+#     - what [color](property) is the [lamp](device)?
+#     - is the [kitchen](room) [light](device) currently [on](property)?
+#     - what's the current [brightness](property) of the [light](property)?
+#     - what is the [name] (property)
+#     - What is the [name](property) of the [light](device)?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#  # פעולות כלליות
+#     - [turn on](action) the [light](device) in the [living room](room)
+#     - [switch off](action) the [TV](device)
+#     - [toggle](action) the [air conditioner](device)
+#     - [start](action) the [washing machine](device)
+#     - [stop](action) the [dryer](device)
+#     - please [turn off](action) the [lamp](device)
+#     - [activate](action) the [security system](device) in the [garage](room)
+#     - [shut down](action) the [oven](device) in the [kitchen](room)
+#     - [power on](action) the [fan](device)
+#     - [turn_off](action) the [vacuum](device)
+    
+#     # שליטה במאפיינים
+#     - [set](action) the [temperature](property) of the [air conditioner](device) to [22](value)
+#     - [change](action) the [color](property) of the [lamp](device) to [blue](value)
+#     - [dim](action) the [light](device) to [30](value)
+#     - [adjust](action) the [speed](property) of the [fan](device) to [high](value)
+#     - [make](action) the [light](device) [red](value)
+#     - [set](action) the [door](device) to [locked](value)
+#     - [increase](action) the [temperature](property) to [25](value)
+#     - [change](action) [coffee strength](property) on the [coffee machine](device) to [strong](value)
+#     - [adjust](action) the [lamp](device) to [warm white](value)
+#     - [set](action) the [color](property) of the [light](device) to [green](value)
+#     - [set](action) the [color](property) to [yellow](value)
+#     - [increase](action) the [brightness](property) of the [lamp](device) to [80](value)
+#     - [reduce](action) the [volume](property) of the [TV](device) to [5](value)
+#     - [switch](action) the [fan](device) to [medium](value)
+#     - [set](action) the [intensity](property) of the [light](device) to [low](value)
+#     - [change](action) the [color](property) of the [kitchen light](device) to [purple](value)
+#     - [adjust](action) the [temperature](property) of the [heater](device) to [24](value)
+#     - [increase](action) the [fan speed](property) of the [air conditioner](device) to [high](value)
+#     - [make](action) the [living room light](device) [warm white](value)
+#     - [set](action) the [brightness](property) to [100](value)
+#     - [set](action) the [color](property) to [red](value)
+#     - [set](action) the [coffee strength](property) of the [coffee machine](device) to [mild](value)
+#     - [adjust](action) the [humidity](property) of the [air purifier](device) to [45](value)
+#     - [change](action) the [temperature](property) to [21](value)
+#     - [turn on](action) the [heater](device)
+#     - [switch off](action) the [lamp](device)
+#     - please [turn on](action) the [fan](device)
+#     - [activate](action) the [coffee machine](device)
+#     - I want to [turn off](action) the [air purifier](device)
+#     - [turn](action) the [light](device) [on](value)
+#     - [trun on](action) the [light](device)
+
+
+
+
+
+# - intent: get_device_status
+#   examples: |
+#     - can you tell me if the [light](device) is [on](property)?
+#     - I want to know if the [oven](device) is still [running](property)?
+#     - can you tell me is the [door](device) [locked](property)?
+#     - what's the [status](property) of the [light](device)?
+#     - is the [air conditioner](device) [on](property)?
+#     - what's the [temperature](property) on the [thermostat](device)?
+#     - how [bright](property) is the [lamp](device)?
+#     - what [color](property) is the [light](device)?
+#     - what's the [speed](property) of the [air conditioner](device)?
+#     - is the [vacuum](device) [active](property)?
+#     - what's the [humidity level](property) on the [air purifier](device)?
+#     - Is the [lamp](device) working?
+#     - What's the [status](property) of the [light](device)?
+#     - Is the [living room](room) [light](device) [off](property)?
+#     - Is the [oven](device) [on](property)?
+#     - is the [light](device) [blue](property)?
+#     - is the [lamp](device) [working](property)?
+#     - is the [bedroom](room) [lamp](device) [off](property)?
+#     - is the [light](device) [turned on](property)?
+#     - is the [lamp](device) [active](property)?
+#     - is the [heater](device) [on](property)?
+#     - what’s the [status](property) of the [coffee machine](device)?
+#     - has the [dryer](device) [stopped](property)?
+#     - is the [fan](device) [running](property)?
+#     - is the [light](device) [off](property)?
+#     - is the [microwave](device) still [working](property)?
+#     - what's the [color](property) of the [lamp](device)?
+#     - what [brightness](property) is set on the [lamp](device)?
+#     - is the [air conditioner](device) [cooling](property)?
+#     - what's the current [volume](property) of the [TV](device)?
+#     - what's the [status](property) of the [fan](device) in the [bedroom](room)?
+#     - has the [vacuum](device) [started](property)?
+#     - is the [light](device) [on](property)?
+#     - is the [lamp](device) [off](property)?
+#     - what's the [status](property) of the [living room](room) [light](device)?
+#     - is the [bedroom](room) [lamp](device) [working](property)?
+#     - how [bright](property) is the [light](device)?
+#     - what [color](property) is the [lamp](device)?
+#     - is the [table](room) [lamp](device) [active](property)?
+#     - is the [hallway](room) [light](device) [turned off](property)?
+#     - is the [kitchen](room) [light](device) currently [on](property)?
+#     - is the [reading](room) [light](device) [red](value)?
+#     - what's the current [brightness](property) of the [light](property)?
+#     - has the [lamp](device) been [turned on](property)?
+   
+#     - what's the [status](property) of the [light](device)?
+
+
+# - intent: control_info
+#   examples: |
+#     - [switch off](action) the [light](device) in the [kitchen](room)
+#     - [start](action) the [vacuum cleaner](device) in the [bedroom](room)
+#     - [stop](action) the [lamp](device) in the [office](room)
+#     - [turn on](action) the [oven](device) in the [kitchen](room)
+#     - [turn off](action) the [air purifier](device) in the [dining room](room)
+#     - [check](action) the [fridge](device) in the [garage](room)
+#     - [unlock](action) the [smart lock](device) at the [main door](room)
+#     - [lock](action) the [door](device) to the [balcony](room)
+#     - [start](action) heating with the [climate system](device) in the [living room](room)
+#     - [turn off](action) the [ac](device) in the [bedroom](room)
+#     - [start](action) the [coffee machine](device) in the [kitchen](room)
+#     - [stop](action) the [dishwasher](device) in the [kitchen](room)
+#     - [turn on](action) the [microwave](device) in the [kitchen](room)
+#     - [switch on](action) the [switch](device) in the [hallway](room)
+#     - [power off](action) the [robot vacuum](device) in the [living room](room)
+#     - [turn on](action) the [light](device)
+#     - [switch on](action) the [air conditioner](device)
+#     - [turn on](action) the [fan](device)
+#     - [power off](action) the [microwave](device)
+#     - [turn off](action) the [ac](device)
+#     - [switch off](action) the [heater](device)
+#     - [activate](action) the [smart lock](device)
+#     - [deactivate](action) the [alarm](device)

@@ -1,0 +1,121 @@
+version: "3.1"
+
+nlu:
+
+- lookup: device
+  examples: |
+    - light
+    - air conditioner
+    - door
+    - oven
+    - microwave
+    - switch 
+    - Heater
+    - robot vacuum
+    - smart lock 
+    - camera
+    - Refrigerator 
+    - coffee machine
+    - Dishwasher 
+    
+#שמות נרדפים למכשירים
+
+# יש לבדוק את השמות
+
+- synonym: air conditioner
+  examples: |
+    - AC
+    - ac
+    - aircon
+    -  fan
+    - air condition
+
+- synonym: light
+  examples: |
+    - lamp
+    - light bulb
+    - chandelier
+    - pendant light
+    - ceiling light
+
+- synonym: fridge
+  examples: |
+    - refrigerator
+    - cooler
+    - freezer
+    - chiller
+    - icebox
+
+- synonym: dishwasher
+  examples: |
+    - dish washer
+    - cleaning machine
+    - dish cleaning unit
+    - dish washing appliance
+    - automatic washer
+
+- synonym: coffee machine
+  examples: |
+    - coffee maker
+    - espresso machine
+    - coffee brewer
+    - percolator
+    - cappuccino machine
+
+- synonym: oven
+  examples: |
+    - stove
+    - range
+    - cooker
+    - baking oven
+    - wall oven
+
+- synonym: microwave
+  examples: |
+    - microwave oven
+    - nuke
+    - micro-oven
+    - zapper
+    - radiant heat oven
+
+- synonym: smart lock
+  examples: |
+    - electronic lock
+    - keyless lock
+    - smart door lock
+    - digital lock
+    - bluetooth lock
+
+- synonym: air purifier
+  examples: |
+    - air cleaner
+    - purification system
+    - air filter
+    - air scrubber
+    - dehumidifier
+
+- synonym: vacuum cleaner
+  examples: |
+    - vacuum
+    - hoover
+    - sweeper
+    - vacuum machine
+    - cordless vacuum
+
+- synonym: heating and cooling system
+  examples: |
+    - hvac
+    - central air
+    - thermostat
+    - climate control
+
+# - synonym: heater
+#   examples: |
+#     - radiator
+#     - furnace
+#     - heat pump
+#     - boiler
+
+
+
+     

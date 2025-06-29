@@ -1,0 +1,39 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.log
+*.sqlite3
+*.db
+.DS_Store
+
+# === Rasa ===
+.rasa/
+.nlu_cache/
+models/
+*.yml.bak
+*.json.bak
+
+# === VS Code / IDEs ===
+.vscode/
+.idea/
+
+
+# === מדיה גדולה (וידאו / תמונות) ===
+media/
+images/
+videos/
+*.mp4
+*.avi
+*.mov
+*.jpg
+*.jpeg
+*.png

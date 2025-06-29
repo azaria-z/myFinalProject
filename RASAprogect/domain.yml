@@ -1,0 +1,258 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - mood_great
+  - mood_unhappy
+  - turn_on
+  - turn_off
+  - display_on
+  - display_off
+  - increase_brightness
+  - decrease_brightness
+  - increase_temperature
+  - decrease_temperature
+  - change_temperature
+  - change_brightness
+  - change_color
+  - change_fanSpeed
+  - change_louverAngle
+  - change_blinds
+  - change_mode
+  - get_status
+  - get_temperature
+  - get_color
+  - get_brightness
+  - get_mode
+  - get_all
+  - get_fanSpeed
+  - get_display
+  - get_blinds
+  - get_louverAngle
+  - get_name
+  - bot_challenge
+  - affirm
+  - deny
+  - nlu_fallback
+  - add_ingredient
+  - reduce_ingredient
+  - make_coffee
+  - get_coffeeType
+  - get_ingredientCoffee
+  - get_ingredientsStatus
+  - get_ingredient
+
+
+entities:
+  - device
+  - value
+  - room
+  - setting
+  # - ingredient
+  # - amount
+  - coffee
+  - get_ingredient
+  - original_intent
+
+
+slots:
+  device:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: device
+  
+  room:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: room
+    
+
+  value:
+    type: text
+    influence_conversation: true
+    mappings:           
+      - type: from_entity
+        entity: value
+
+  setting:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: setting
+  # ingredient:
+  #   type: text
+  #   influence_conversation: true
+  #   mappings:
+  #     - type: from_entity
+  #       entity: ingredient
+  # amount:
+  #   type: text
+  #   influence_conversation: true
+  #   mappings:
+  #     - type: from_entity
+  #       entity: amount
+  coffee:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: coffee
+
+  original_intent:
+    type: text
+    influence_conversation: false
+    mappings: []
+
+
+
+forms:
+
+# הדלקה וכיבוי של המכשיר
+  active_device_form:
+    required_slots:
+      - device
+      - room
+
+# שינוי הגדרות של המכשיר
+  change_setting_form:
+    required_slots:
+      - device
+      - value
+      - room
+
+# שינוי הגדרות ללא ערכים חובה
+  change_setting_not_required_form:
+    required_slots:
+      - device
+      - room
+
+# קבלת מצב המכשיר
+  get_device_status_form:
+    required_slots:
+      - device
+      - room
+  
+  get_ingredient_form:
+    required_slots:
+      - device
+      - room
+      - setting
+
+
+# זה יכול להיות גם על המקרר
+  # ingredient_form:
+  #   required_slots:
+  #     - ingredient
+  #     - amount
+  #     - device
+
+# פה אני לא צריכה לשאול באיזה מכשיר כי זה ברור
+  make_coffee_form:
+    required_slots:
+      - coffee
+
+  # get_ingredient_form:
+  #   required_slots:
+  #     - coffee
+
+responses:
+  utter_greet:
+  - text: "Hey! What can I help you with today?"
+
+  utter_cheer_up:
+  - text: "I am so sad to hear this."
+
+  utter_did_that_help:
+  - text: "Do you need more help?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_ask_what_help:
+  - text: "how can i halp you?"
+  
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_default:
+  - text: "Sorry, I didn't understand. Could you rephrase that?"
+
+  utter_ask_device:
+  - text: "Which device would you like to use?"
+
+  utter_ask_action:
+  - text: "What action do you want to do?"
+
+  utter_ask_room:
+  - text: "In which room?"
+
+# לחשוב על ביצוע יותר טוב
+  utter_ask_setting:
+  - text: "What setting would you like to change?"
+
+  utter_ask_value:
+  - text: "What {setting} do you want to set?"
+
+  utter_ask_help:
+    - text: "What can I do to help?"
+
+  # utter_ask_ingredient:
+  #   - text: "Which ingredient would you like to add?"
+
+  # utter_ask_amount:
+  #   - text: "How much would you like to add?"
+  
+# utter_weather_info:
+# - text: "The weather is great today."
+
+  # utter_submit:
+  # - text: "succeessfully submitted!"
+
+
+
+
+  # utter_iamabot:
+  # - text: "I am a bot, powered by Rasa."
+
+
+actions:
+  - active_device_action
+  - change_setting_action
+  - change_setting_not_required_action
+  - get_device_status_action
+  - action_ask_clarification
+  - action_keep_intent
+  - ingredient_action
+  - make_coffee_action
+  - get_ingredient_action
+  - Coffee_request_action
+  # - validate_change_setting_form
+  # - action_say_info
+  # - action_submit
+  # # - action_enpty_slots
+  # - control_device_action
+  # # - set_device_property_action
+  # - get_device_statuse_action
+  # - validate_control_device_form
+  # - action_end_conversation 
+
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+
+#הוספת ערך בוליאני למקרה בו יש  משתנה נוסף 
+
+
+
+
+
+

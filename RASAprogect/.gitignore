@@ -1,0 +1,5 @@
+
+rasa_env/
+results/
+tests/
+.rasa/

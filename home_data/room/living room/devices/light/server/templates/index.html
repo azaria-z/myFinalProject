@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Light Controller</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      padding: 20px;
+    }
+    .card {
+      background-color: white;
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .card h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .status {
+      font-size: 16px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Smart Light Status</h2>
+    <div class="status" id="statusDisplay">Loading...</div>
+    <button onclick="refreshStatus()">רענן נתונים</button>
+  </div>
+
+  <script>
+    async function refreshStatus() {
+      try {
+        // נקבל את כל המידע במקביל
+        const [stateRes, colorRes, brightnessRes, nameRes] = await Promise.all([
+          fetch('/light/state'),
+          fetch('/light/color'),
+          fetch('/light/brightness'),
+          fetch('/light/name')
+        ]);
+        if (!stateRes.ok || !colorRes.ok || !brightnessRes.ok || !nameRes.ok) {
+          throw new Error('Failed to fetch some data');
+        }
+        const state = await stateRes.json();
+        const color = await colorRes.json();
+        const brightness = await brightnessRes.json();
+        const name = await nameRes.json();
+
+        document.getElementById('statusDisplay').innerHTML = `
+          <strong>State:</strong> ${state.message} <br/>
+          <strong>Color:</strong> ${color.message} <br/>
+          <strong>Brightness:</strong> ${brightness.message} <br/>
+          <strong>Name:</strong> ${name.message}
+        `;
+      } catch (err) {
+        document.getElementById('statusDisplay').textContent = 'Error loading data';
+        console.error(err);
+      }
+    }
+
+    window.onload = refreshStatus;
+  </script>
+</body>
+</html>

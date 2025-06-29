@@ -1,0 +1,50 @@
+
+  name: Light
+  actions:
+      turn_off:
+        URL: http://localhost:{port}/light/state
+        method: POST
+        params:
+          state: false
+      turn_on:
+        URL: http://localhost:{port}/light/state
+        method: POST
+        params:
+            state: true
+      change_color:  
+        URL: http://localhost:{port}/light/color
+        method: POST
+        params:
+            color: null
+      change_brightness:
+        URL: http://localhost:{port}/light/brightness
+        method: POST
+        params:
+            brightness: 0
+      change_name:
+        URL: http://localhost:{port}/light/name
+        method: POST
+        params:
+            name: null
+      increase_brightness:
+        URL: http://localhost:{port}/light/increase_brightness
+        method: POST
+        params:
+          num: 10
+      decrease_brightness:
+        URL: http://localhost:{port}/light/decrease_brightness
+        method: POST
+        params:
+            num: 10
+      get_color:
+        URL: http://localhost:{port}/light/color
+        method: GET
+      get_brightness: 
+        URL: http://localhost:{port}/light/brightness
+        method: GET
+      get_status: 
+        URL: http://localhost:{port}/light/state
+        method: GET
+      get_name: 
+        URL: http://localhost:{port}/light/name
+        method: GET

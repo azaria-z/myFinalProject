@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rasa Core Visualisation</title>
+    <script src="https://dagrejs.github.io/project/dagre-d3/latest/dagre-d3.min.js"></script>
+    <script src="https://dagrejs.github.io/project/dagre/latest/dagre.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.3/graphlib-dot.js"></script>
+</head>
+<body>
+<div id="errormsg" style="color: #b00"></div>
+<svg>
+    <style id="graph-style">
+        .node.invisible > rect {
+            display: none;
+        }
+
+        .node.start > rect {
+            fill: #7f7;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node.end > rect {
+            fill: #f77;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node:not(.active) > rect, .node:not(.active) > .label {
+            opacity: 0.4;
+        }
+
+        .edgePath:not(.active) path {
+            opacity: 0.4;
+        }
+
+        .node.ellipsis > rect {
+            fill: #CCC;
+        }
+
+        .node.intent > rect {
+            fill: #7ff;
+        }
+
+        .node.dashed > rect {
+            stroke-dasharray: 5;
+        }
+
+        text {
+            font-weight: 300;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serf, serif;
+            font-size: 14px;
+            color: #1f1d1d;
+        }
+
+        .node rect {
+            stroke: #444;
+            fill: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .edgePath path {
+            stroke: #333;
+            stroke-width: 1.5px;
+        }
+
+        svg {
+            position: fixed;
+            top: 10px;
+            left: 0;
+            height: 100%;
+            width: 100%
+        }
+    </style>
+    <g></g>
+</svg>
+<script>
+
+  function serveGraph() {
+    let oldInputGraphValue;
+
+    const url = 'visualization.dot';
+    const refreshInterval = 500;
+
+    // trigger a refresh by fetching an updated graph
+    setInterval(function () {
+      fetch(url).then(r => r.text()).then(dot => {
+        document.getElementById('errormsg').innerHTML = '';
+        if (oldInputGraphValue === dot) return;
+
+        oldInputGraphValue = dot;
+        drawGraph(dot);
+      }).catch(err => {
+        document.getElementById('errormsg').innerHTML =
+          'Failed to update plot. (' + err.message + ')';
+      });
+    }, refreshInterval);
+  }
+
+  function drawGraph(graph) {
+    let g = graphlibDot.read(graph);
+    // Set margins, if not present
+    if (!g.graph().hasOwnProperty("marginx") &&
+      !g.graph().hasOwnProperty("marginy")) {
+      g.graph().marginx = 20;
+      g.graph().marginy = 20;
+    }
+    g.graph().transition = function (selection) {
+      return selection.transition().duration(300);
+    };
+    // Render the graph into svg g
+    d3.select("svg g").call(render, g);
+  }
+  // Set up zoom support
+  const svg = d3.select("svg"),
+    inner = d3.select("svg g"),
+    zoom = d3.zoom().on("zoom", function () {
+      inner.attr("transform", d3.event.transform);
+    });
+  svg.call(zoom);
+
+  // Create and configure the renderer
+  const render = dagreD3.render();
+
+  let isClient = false;
+  isClient = true;
+
+  if (isClient) {
+    // Mark all nodes and their edges as active
+    cssRules = document.getElementById('graph-style').sheet.cssRules;
+    cssRules[3].style.opacity = 1;
+    cssRules[4].style.opacity = 1;
+
+    let graph;
+    graph = `digraph  {
+0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
+"-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
+1 [class="", fontsize=12, label=utter_greet];
+3 [class="", fontsize=12, label=utter_happy];
+5 [class="", fontsize=12, label=utter_cheer_up];
+6 [class="", fontsize=12, label=utter_did_that_help];
+11 [class="", fontsize=12, label=utter_goodbye];
+16 [class="", fontsize=12, label=utter_ask_help];
+17 [class="", fontsize=12, label=utter_ask_what_help];
+20 [class="", fontsize=12, label="..."];
+21 [class="", fontsize=12, label=action_keep_intent];
+22 [class="", fontsize=12, label=change_setting_form];
+39 [class="", fontsize=12, label=change_setting_form];
+40 [class="", fontsize=12, label=change_setting_action];
+41 [class="", fontsize=12, label=utter_did_that_help];
+43 [class="", fontsize=12, label=change_setting_not_required_form];
+49 [class="", fontsize=12, label=active_device_form];
+53 [class="", fontsize=12, label=change_setting_not_required_form];
+54 [class="", fontsize=12, label=change_setting_not_required_action];
+57 [class="", fontsize=12, label=make_coffee_form];
+59 [class="", fontsize=12, label=make_coffee_form];
+60 [class="", fontsize=12, label=make_coffee_action];
+63 [class="", fontsize=12, label=get_device_status_form];
+87 [class="", fontsize=12, label=get_device_status_form];
+88 [class="", fontsize=12, label=get_device_status_action];
+91 [class="", fontsize=12, label=Coffee_request_action];
+97 [class="", fontsize=12, label=get_ingredient_form];
+101 [class="", fontsize=12, label=get_ingredient_form];
+102 [class="", fontsize=12, label=get_ingredient_action];
+107 [class="", fontsize=12, label=active_device_form];
+108 [class="", fontsize=12, label=active_device_action];
+119 [class=intent, fillcolor=lightblue, label=goodevening, shape=rect, style=filled];
+120 [class=intent, fillcolor=lightblue, label=wonderful, shape=rect, style=filled];
+121 [class=intent, fillcolor=lightblue, label="I am sad", shape=rect, style=filled];
+122 [class=intent, fillcolor=lightblue, label=yes, shape=rect, style=filled];
+123 [class=intent, fillcolor=lightblue, label="am I talking to a human?", shape=rect, style=filled];
+124 [class=intent, fillcolor=lightblue, label=no, shape=rect, style=filled];
+125 [class=intent, fillcolor=lightblue, label="of course", shape=rect, style=filled];
+126 [class=intent, fillcolor=lightblue, label="no thanks", shape=rect, style=filled];
+127 [class=intent, fillcolor=lightblue, label="set AC temperature in the bedroom to 20", shape=rect, style=filled];
+128 [class=intent, fillcolor=lightblue, label="Change air conditioner fan speed to low", shape=rect, style=filled];
+129 [class=intent, fillcolor=lightblue, label="Adjust the louver angle of the air conditioner", shape=rect, style=filled];
+130 [class=intent, fillcolor=lightblue, label="Set blinds to open", shape=rect, style=filled];
+131 [class=intent, fillcolor=lightblue, label="Add 20 ml of water to the coffee machine", shape=rect, style=filled];
+132 [class=intent, fillcolor=lightblue, label="change milk from 100 ml to 50 ml", shape=rect, style=filled];
+133 [class=intent, fillcolor=lightblue, label="I want the living room light to be purple", shape=rect, style=filled];
+134 [class=intent, fillcolor=lightblue, label="make the brightness 100", shape=rect, style=filled];
+135 [class=intent, fillcolor=lightblue, label="switch the AC mode to fan", shape=rect, style=filled];
+136 [class=intent, fillcolor=lightblue, label="make it brighter", shape=rect, style=filled];
+137 [class=intent, fillcolor=lightblue, label="increase the AC temperature by 2 degrees", shape=rect, style=filled];
+138 [class=intent, fillcolor=lightblue, label="set the brightness lower", shape=rect, style=filled];
+139 [class=intent, fillcolor=lightblue, label="cool the room down", shape=rect, style=filled];
+140 [class=intent, fillcolor=lightblue, label="Power up the coffee machine in the kitchen", shape=rect, style=filled];
+141 [class=intent, fillcolor=lightblue, label="deactivate the oven", shape=rect, style=filled];
+142 [class=intent, fillcolor=lightblue, label="Turn on the AC display", shape=rect, style=filled];
+143 [class=intent, fillcolor=lightblue, label="Disable the air conditioner display", shape=rect, style=filled];
+144 [class=intent, fillcolor=lightblue, label="i want to drink a coffee", shape=rect, style=filled];
+145 [class=intent, fillcolor=lightblue, label="What does a mocha contain?", shape=rect, style=filled];
+146 [class=intent, fillcolor=lightblue, label="Is the AC running?", shape=rect, style=filled];
+147 [class=intent, fillcolor=lightblue, label="what's the current temperature?", shape=rect, style=filled];
+148 [class=intent, fillcolor=lightblue, label="is the light set to blue?", shape=rect, style=filled];
+149 [class=intent, fillcolor=lightblue, label="what's the brightness level of the kitchen lamp?", shape=rect, style=filled];
+150 [class=intent, fillcolor=lightblue, label="what is the coffee machine's current mode?", shape=rect, style=filled];
+151 [class=intent, fillcolor=lightblue, label="Show me all settings of the AC", shape=rect, style=filled];
+152 [class=intent, fillcolor=lightblue, label="What is the fan speed of the AC?", shape=rect, style=filled];
+153 [class=intent, fillcolor=lightblue, label="Tell me the blinds status", shape=rect, style=filled];
+154 [class=intent, fillcolor=lightblue, label="Is the display of the air conditioner on?", shape=rect, style=filled];
+155 [class=intent, fillcolor=lightblue, label="What is the louver angle of the AC?", shape=rect, style=filled];
+156 [class=intent, fillcolor=lightblue, label="What's the name of the air conditioner in the bedroom?", shape=rect, style=filled];
+157 [class=intent, fillcolor=lightblue, label="What coffee drinks can I choose from?", shape=rect, style=filled];
+158 [class=intent, fillcolor=lightblue, label="Show me the current ingredient levels", shape=rect, style=filled];
+159 [class=intent, fillcolor=lightblue, label="What is the amount of coffee beans?", shape=rect, style=filled];
+0 -> 16  [class="", key=NONE, label=""];
+0 -> 20  [class="", key=NONE, label=""];
+0 -> 119  [class="", key=0];
+1 -> "-1"  [class="", key=NONE, label=""];
+1 -> 120  [class="", key=0];
+1 -> 121  [class="", key=0];
+3 -> "-1"  [class="", key=NONE, label=""];
+5 -> 6  [class="", key=NONE, label=""];
+6 -> 122  [class="", key=0];
+6 -> 123  [class="", key=0];
+6 -> 124  [class="", key=0];
+11 -> "-1"  [class="", key=NONE, label=""];
+16 -> 125  [class="", key=0];
+16 -> 126  [class="", key=0];
+17 -> "-1"  [class="", key=NONE, label=""];
+20 -> 39  [class="", key=NONE, label=""];
+20 -> 53  [class="", key=NONE, label=""];
+20 -> 59  [class="", key=NONE, label=""];
+20 -> 87  [class="", key=NONE, label=""];
+20 -> 101  [class="", key=NONE, label=""];
+20 -> 107  [class="", key=NONE, label=""];
+20 -> 127  [class="", key=0];
+20 -> 128  [class="", key=0];
+20 -> 129  [class="", key=0];
+20 -> 130  [class="", key=0];
+20 -> 131  [class="", key=0];
+20 -> 132  [class="", key=0];
+20 -> 133  [class="", key=0];
+20 -> 134  [class="", key=0];
+20 -> 135  [class="", key=0];
+20 -> 136  [class="", key=0];
+20 -> 137  [class="", key=0];
+20 -> 138  [class="", key=0];
+20 -> 139  [class="", key=0];
+20 -> 140  [class="", key=0];
+20 -> 141  [class="", key=0];
+20 -> 142  [class="", key=0];
+20 -> 143  [class="", key=0];
+20 -> 144  [class="", key=0];
+20 -> 145  [class="", key=0];
+20 -> 146  [class="", key=0];
+20 -> 147  [class="", key=0];
+20 -> 148  [class="", key=0];
+20 -> 149  [class="", key=0];
+20 -> 150  [class="", key=0];
+20 -> 151  [class="", key=0];
+20 -> 152  [class="", key=0];
+20 -> 153  [class="", key=0];
+20 -> 154  [class="", key=0];
+20 -> 155  [class="", key=0];
+20 -> 156  [class="", key=0];
+20 -> 157  [class="", key=0];
+20 -> 158  [class="", key=0];
+20 -> 159  [class="", key=0];
+21 -> 22  [class="", key=NONE, label=""];
+22 -> "-1"  [class="", key=NONE, label=""];
+39 -> 40  [class="", key=NONE, label=""];
+40 -> 41  [class="", key=NONE, label=""];
+41 -> "-1"  [class="", key=NONE, label=""];
+43 -> "-1"  [class="", key=NONE, label=""];
+49 -> "-1"  [class="", key=NONE, label=""];
+53 -> 54  [class="", key=NONE, label=""];
+54 -> 41  [class="", key=NONE, label=""];
+57 -> "-1"  [class="", key=NONE, label=""];
+59 -> 60  [class="", key=NONE, label=""];
+60 -> 41  [class="", key=NONE, label=""];
+63 -> "-1"  [class="", key=NONE, label=""];
+87 -> 88  [class="", key=NONE, label=""];
+88 -> 41  [class="", key=NONE, label=""];
+91 -> "-1"  [class="", key=NONE, label=""];
+97 -> "-1"  [class="", key=NONE, label=""];
+101 -> 102  [class="", key=NONE, label=""];
+102 -> 41  [class="", key=NONE, label=""];
+107 -> 108  [class="", key=NONE, label=""];
+108 -> 41  [class="", key=NONE, label=""];
+119 -> 1  [class="", key=0];
+120 -> 3  [class="", key=0];
+121 -> 5  [class="", key=0];
+122 -> 3  [class="", key=0];
+123 -> 3  [class="", key=0];
+124 -> 11  [class="", key=0];
+125 -> 17  [class="", key=0];
+126 -> 11  [class="", key=0];
+127 -> 21  [class="", key=0];
+128 -> 21  [class="", key=0];
+129 -> 21  [class="", key=0];
+130 -> 21  [class="", key=0];
+131 -> 21  [class="", key=0];
+132 -> 21  [class="", key=0];
+133 -> 21  [class="", key=0];
+134 -> 21  [class="", key=0];
+135 -> 21  [class="", key=0];
+136 -> 43  [class="", key=0];
+137 -> 43  [class="", key=0];
+138 -> 43  [class="", key=0];
+139 -> 43  [class="", key=0];
+140 -> 49  [class="", key=0];
+141 -> 49  [class="", key=0];
+142 -> 49  [class="", key=0];
+143 -> 49  [class="", key=0];
+144 -> 57  [class="", key=0];
+145 -> 57  [class="", key=0];
+146 -> 63  [class="", key=0];
+147 -> 63  [class="", key=0];
+148 -> 63  [class="", key=0];
+149 -> 63  [class="", key=0];
+150 -> 63  [class="", key=0];
+151 -> 63  [class="", key=0];
+152 -> 63  [class="", key=0];
+153 -> 63  [class="", key=0];
+154 -> 63  [class="", key=0];
+155 -> 63  [class="", key=0];
+156 -> 63  [class="", key=0];
+157 -> 91  [class="", key=0];
+158 -> 91  [class="", key=0];
+159 -> 97  [class="", key=0];
+}
+`;
+    drawGraph(graph);
+  } else {
+    serveGraph();
+  }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+
+version: "3.1"
+
+rules:
+
+
+#שאלות על המצב של המכשיר
+#שאלות בסיסיות
+- rule: get_status device
+  steps:
+   - intent: get_status
+   - action: get_device_status_form
+   - active_loop: get_device_status_form
+
+- rule: get_temperature device
+  steps:
+   - intent: get_temperature
+   - action: get_device_status_form
+   - active_loop: get_device_status_form
+
+- rule: get_color device
+  steps:
+   - intent: get_color
+   - action: get_device_status_form
+   - active_loop: get_device_status_form
+
+- rule: get_brightness device
+  steps:
+   - intent: get_brightness
+   - action: get_device_status_form
+   - active_loop: get_device_status_form
+
+- rule: get_mode device
+  steps:
+   - intent: get_mode
+   - action: get_device_status_form
+   - active_loop: get_device_status_form
+
+- rule: get_all_status device
+  steps:
+   - intent: get_all
+   - action: get_device_status_form
+   - active_loop: get_device_status_form
+
+- rule: get_fanSpeed device
+  steps:
+   - intent: get_fanSpeed
+   - action: get_device_status_form
+   - active_loop: get_device_status_form
+
+
+- rule: get_blinds device
+  steps:
+   - intent: get_blinds
+   - action: get_device_status_form
+   - active_loop: get_device_status_form
+
+- rule: get_display device
+  steps:
+   - intent: get_display
+   - action: get_device_status_form
+   - active_loop: get_device_status_form
+
+- rule: get_louverAngle device
+  steps:
+   - intent: get_louverAngle
+   - action: get_device_status_form
+   - active_loop: get_device_status_form
+
+- rule: get_name device
+  steps:
+   - intent: get_name
+   - action: get_device_status_form
+   - active_loop: get_device_status_form
+
+#לאחר שהטופס התמלא
+- rule: Submit get_device_status_form
+  condition:
+    - active_loop: get_device_status_form
+  steps:
+    - action: get_device_status_form
+    - active_loop: null
+    - action: get_device_status_action
+    - action: utter_did_that_help
+
+- rule: get_coffeeType
+  steps:
+   - intent: get_coffeeType
+   - action: Coffee_request_action
+
+- rule: get_ingredientsStatus
+  steps:
+   - intent: get_ingredientsStatus
+   - action: Coffee_request_action
+
+
+- rule: get_ingredientCoffee
+  steps:
+   - intent: get_ingredientCoffee
+   - action: make_coffee_form
+   - active_loop: make_coffee_form
+
+- rule: get_ingredient
+  steps:
+   - intent: get_ingredient
+   - action: get_ingredient_form
+   - active_loop: get_ingredient_form
+
+- rule: Submit get_ingredient_form
+  condition:
+    - active_loop: get_ingredient_form
+  steps:
+    - action: get_ingredient_form
+    - active_loop: null
+    - action: get_ingredient_action
+    - action: utter_did_that_help

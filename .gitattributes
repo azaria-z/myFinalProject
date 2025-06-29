@@ -1,0 +1,17 @@
+# כל הקבצים יטופלו אוטומטית ע"י Git
+* text=auto
+
+# קבצי Python ישמרו עם LF (Unix style)
+*.py text eol=lf
+
+# קבצי YAML (כולל קבצי Rasa) ישמרו גם עם LF
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# קבצי JSON נשמרים עם LF
+*.json text eol=lf
+
+# כל שאר הקבצים הבינאריים לא ישתנו (למשל npz)
+*.npz binary
+
+# אפשר להוסיף חריגות לפי צורך

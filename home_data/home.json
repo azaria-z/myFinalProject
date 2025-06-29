@@ -1,0 +1,38 @@
+{
+  "address": "123 Main St, Tel Aviv",
+  "floors": 2,
+  "global_devices": {
+    "coffee machine": [{"living room":5006}],
+    "fridge":[{"kitchen":5006}]
+  },
+  "rooms": {
+    "living room": {
+      "sensor": {
+        "temperature":"D:\\temp\\Documents\\project\\Text analysis\\home_data\\room\\living room\\sensors\\temperature.txt",
+        "humidity":"D:\\temp\\Documents\\project\\Text analysis\\home_data\\room\\living room\\sensors\\humidity.txt",
+        "presence":"D:\\temp\\Documents\\project\\Text analysis\\home_data\\room\\living room\\sensors\\presence.txt"
+      },
+      "devices": {
+        "light": 5000,
+        "air conditioner": 5004,
+        "coffee machine": 5006,
+        "switches": {}
+      },
+      "camera":{
+        "name": "living_room_cam",
+        "source": 0
+      }
+    }
+  },
+  "hallway":{
+      "main":{
+        "camera":{"name": "hallway_cam", "source":0},
+        "devices": {
+     }
+      }
+
+    }
+
+
+}
+  

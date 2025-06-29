@@ -1,0 +1,206 @@
+version: "3.1"
+
+# דברים נילווים לבוט
+#חלקם בנויים מהתוכנה
+# במידה ויהיה זמן אוסיף עוד
+
+
+nlu:
+- intent: greet
+  examples: |
+    - hey nina
+    - hello
+    - hi nina
+    - hello nina
+    - good morning
+    - good evening
+    - moin
+    - hey nina
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - hi
+    - What's up?
+    - nina
+
+- intent: goodbye
+  examples: |
+    - good bye
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - Thank you for your help
+    - See you later
+    - Have a nice day
+    - Thanks, I'm done here
+    - I'm finished, goodbye
+    - See you next time
+    - Appreciate your help, bye
+    - Thanks for chatting
+    - That's all for today
+    - I don't need any more help
+    - No more questions for now
+    - I think we're done
+    - This is all for now, thanks
+    - I'll reach out later if I need anything else
+    - That's all I wanted to ask
+    - Thanks for your help
+    - Thank you!
+    - I appreciate your assistance
+    - Thank you so much
+
+
+- intent: affirm
+  examples: |
+    - yes
+    - sure
+    - of course
+    - definitely
+    - absolutely
+    - alright
+    - yep
+    - okay
+    - sounds good
+    - I agree
+
+- intent: deny
+  examples: |
+    - no
+    - not really
+    - I don't think so
+    - maybe not
+    - not at all
+    - nope
+    - no thanks
+    - not right now
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+    
+- intent: nlu_fallback
+  examples: []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# - intent: affirm
+#   examples: |
+#     - yes
+#     - y
+#     - indeed
+#     - of course
+#     - that sounds good
+#     - correct
+
+# - intent: deny
+#   examples: |
+#     - no
+#     - n
+#     - never
+#     - I don't think so
+#     - don't like that
+#     - no way
+#     - not really
+

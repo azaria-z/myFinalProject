@@ -1,0 +1,95 @@
+  name: air coonditioner
+  actions:
+      turn_off:
+        URL: http://localhost:{port}/ac/state
+        method: POST
+        params:
+          state: off
+      turn_on:
+        URL: http://localhost:{port}/ac/state
+        method: POST
+        params:
+            state: true      
+      display_on:
+        URL: http://localhost:{port}/ac/display
+        method: POST
+        params:
+          state: on
+      display_off:
+       URL: http://localhost:{port}/ac/display
+       method: POST
+       params:
+         state: off
+      change_mode:
+        URL: http://localhost:{port}/ac/mode
+        method: POST
+        params:
+            mode: null
+      change_name:
+        URL: http://localhost:{port}/ac/name
+        method: POST
+        params:
+            name: null
+      change_temperature:
+        URL: http://localhost:{port}/ac/temperature
+        method: POST
+        params:
+            temperature: 0
+      change_fanSpeed:
+        URL: http://localhost:{port}/ac/fan_speed
+        method: POST
+        params:
+            fanSpeed: null
+
+      change_louverAngle:
+        URL: http://localhost:{port}/ac/louver_angle
+        method: POST
+        params:
+            louverAngle: null
+      change_blinds:
+        URL: http://localhost:{port}/ac/blinds
+        method: POST
+        params:
+            blinds: null
+      increase_temperature:
+        URL: http://localhost:{port}/ac/increase_temperature
+        method: POST
+        params:
+          temperature: 10
+      decrease_temperature:
+       URL: http://localhost:{port}/ac/decrease_temperature
+       method: POST
+       params:
+           temperature: 10
+      
+      get_all:
+        URL: http://localhost:{port}/ac/all_status_mode
+        method: GET
+      get_temperature: 
+        URL: http://localhost:{port}/ac/status/temperature
+        method: GET
+      get_status: 
+        URL: http://localhost:{port}/ac/state
+        method: GET
+      get_name: 
+        URL: http://localhost:{port}/ac/name
+        method: GET
+      get_fanSpeed:
+        URL: http://localhost:{port}/ac/status/fan_speed
+        method: GET
+      get_mode:
+        URL: http://localhost:{port}/ac/status/mode
+        method: GET
+      get_blinds: 
+        URL: http://localhost:{port}/ac/status/blinds
+        method: GET
+      get_display: 
+        URL: http://localhost:{port}/ac/status/display
+        method: GET
+      get_louverAngle: 
+        URL: http://localhost:{port}/ac/status/louverAngle
+        method: GET
+
+
+      
+

@@ -1,0 +1,408 @@
+version: "3.1"
+
+rules:
+
+#כיבוי והדלקה
+- rule: turn on device
+  steps:
+   - intent: turn_on
+   - action: active_device_form
+   - active_loop: active_device_form
+
+- rule: turn off device
+  steps:
+   - intent: turn_off
+   - action: active_device_form
+   - active_loop: active_device_form
+
+- rule: display_on device
+  steps:
+   - intent: display_on
+   - action: active_device_form
+   - active_loop: active_device_form
+
+
+- rule: display_off device
+  steps:
+   - intent: display_off
+   - action: active_device_form
+   - active_loop: active_device_form
+
+#לאחר שהטופס התמלא
+- rule: Submit active_device_form
+  condition:
+    - active_loop: active_device_form
+  steps:
+    - action: active_device_form
+    - active_loop: null
+    - action: active_device_action
+    - action: utter_did_that_help
+
+
+#שינוי  הגדרות
+#צריך לקבל גם ערך
+- rule: change_temperature
+  steps:
+   - intent: change_temperature
+   - action: action_keep_intent
+   - action: change_setting_form
+   - active_loop: change_setting_form
+
+- rule: change_color
+  steps:
+   - intent: change_color
+   - action: action_keep_intent
+   - action: change_setting_form
+   - active_loop: change_setting_form
+
+
+
+- rule: change_brightness
+  steps:
+   - intent: change_brightness
+   - action: action_keep_intent
+   - action: change_setting_form
+   - active_loop: change_setting_form
+
+- rule: change_mode
+  steps:
+   - intent: change_mode
+   - action: action_keep_intent
+   - action: change_setting_form
+   - active_loop: change_setting_form
+
+- rule: change_temperature
+  steps:
+   - intent: change_temperature
+   - action: action_keep_intent
+   - action: change_setting_form
+   - active_loop: change_setting_form
+
+- rule: change_fanSpeed
+  steps:
+   - intent: change_fanSpeed
+   - action: action_keep_intent
+   - action: change_setting_form
+   - active_loop: change_setting_form
+
+- rule: change_louverAngle
+  steps:
+   - intent: change_louverAngle
+   - action: action_keep_intent
+   - action: change_setting_form
+   - active_loop: change_setting_form
+
+- rule: change_blinds
+  steps:
+   - intent: change_blinds
+   - action: action_keep_intent
+   - action: change_setting_form
+   - active_loop: change_setting_form
+
+- rule: add_ingredient
+  steps:
+    - intent: add_ingredient
+    - action: action_keep_intent
+    - action: change_setting_form
+    - active_loop: change_setting_form
+
+- rule: reduce_ingredient
+  steps:
+    - intent: reduce_ingredient
+    - action: action_keep_intent
+    - action: change_setting_form
+    - active_loop: change_setting_form
+
+#לאחר שהטופס התמלא
+- rule: Submit change_setting_form
+  condition:
+    - active_loop: change_setting_form
+  steps:
+    - action: change_setting_form
+    - active_loop: null
+    - action: change_setting_action
+    - action: utter_did_that_help
+
+
+
+
+#שינוי ערכים אשר לא חייבים ערך
+- rule: increase_brightness
+  steps:
+   - intent: increase_brightness
+   - action: change_setting_not_required_form
+   - active_loop: change_setting_not_required_form
+
+- rule: increase_temperature
+  steps:
+   - intent: increase_temperature
+   - action: change_setting_not_required_form
+   - active_loop: change_setting_not_required_form
+
+- rule: decrease_brightness
+  steps:
+   - intent: decrease_brightness
+   - action: change_setting_not_required_form
+   - active_loop: change_setting_not_required_form
+
+- rule: decrease_temperature
+  steps:
+   - intent: decrease_temperature
+   - action: change_setting_not_required_form
+   - active_loop: change_setting_not_required_form
+
+
+#לאחר שהטופס התמלא
+- rule: Submit change_setting_not_required_form
+  condition:
+    - active_loop: change_setting_not_required_form
+  steps:
+    - action: change_setting_not_required_form
+    - active_loop: null
+    - action: change_setting_not_required_action
+    - action: utter_did_that_help
+
+
+
+
+
+
+
+# #לאחר שהטופס התמלא
+# - rule: Submit ingredient_form
+#   condition:
+#     - active_loop: ingredient_form
+#   steps:
+#     - action: ingredient_form
+#     - active_loop: null
+#     - action: ingredient_action
+#     - action: utter_did_that_help
+
+
+- rule: make_coffee
+  steps:
+    - intent: make_coffee
+    - action: make_coffee_form
+    - active_loop: make_coffee_form
+
+- rule: Submit make_coffee_form
+  condition:
+    - active_loop: make_coffee_form
+  steps:
+    - action: make_coffee_form
+    - active_loop: null
+    - action: make_coffee_action
+    - action: utter_did_that_help
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# - rule: Fallback when intent recognition is uncertain
+#   steps:
+#   - intent: nlu_fallback
+#   - action: utter_default
+
+
+
+# - rule: Activate control device form
+#   steps:
+#     - intent: control_device
+#     - action: control_device_form
+#     - active_loop: control_device_form
+
+# - rule: Submit control device form
+#   condition:
+#     - active_loop: control_device_form
+#   steps:
+#     - action: control_device_form
+#     - active_loop: null
+#     - action: control_device_action
+#     - action: utter_did_that_help
+#     # - action: utter_submit
+
+
+# - rule: Cancel form on different topic
+#   condition:
+#     - active_loop: control_device_form
+#   steps:
+#     - intent: ask_weather  # או כל נושא אחר
+#     - action: utter_weather_info
+#     - active_loop: null
+
+
+# - rule: End conversation on goodbye
+#   steps:
+#     - intent: goodbye
+#     - action: action_end_conversation
+
+# - rule: End conversation on deny
+#   steps:
+#     - intent: deny
+#     - action: action_end_conversation
+
+
+
+# - rule: Activate get device status form
+#   steps:
+#     - intent: get_device_status
+#     - action: get_device_status_form
+#     - active_loop: get_device_status_form
+
+# - rule: Submit get device status form
+#   condition:
+#     - active_loop: get_device_status_form
+#   steps:
+#     - action: get_device_status_form
+#     - active_loop: null
+#     - action: get_device_statuse_action
+#     - action: utter_did_that_help
+    
+#     # - action: utter_submit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#כללים שאני לא צריכה אותם
+# - rule: active form loop
+#   steps:
+#   - intent:  control_info
+#   - action: simple_form
+#   - active_loop: simple_form
+
+
+# - rule: utter_slots_values
+#   condition: 
+#   - active_loop: simple_form
+#   steps:
+#   - action: simple_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_slots_values
+#   - action: action_say_info
+
+# - rule: Activate set device property form
+#   steps:
+#     - intent: set_device_property
+#     - action: set_device_property_form
+#     - active_loop: set_device_property_form
+
+# - rule: Submit set device property form
+#   condition:
+#     - active_loop: set_device_property_form
+#   steps:
+#     - action: set_device_property_form
+#     - active_loop: null
+#     - action: utter_submit
+#     - action: set_device_property_action
+    # - action: utter_submit
+
+# - rule: Say goodbye anytime the user says goodbye
+#   steps:
+#   - intent: goodbye
+#   - action: utter_goodbye

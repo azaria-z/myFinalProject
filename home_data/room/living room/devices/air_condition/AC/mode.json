@@ -1,0 +1,44 @@
+
+{
+    "COOL": {
+      "mode": "cool",
+      "temperature": 24,
+      "fan_speed": "medium",
+      "display": "on",
+      "blinds_position": "OPEN",
+      "louver_angle": 50
+    },
+    "HEAT": {
+      "mode": "heat",
+      "temperature": 26,
+      "fan_speed": "high",
+      "display": "on",
+      "blinds_position": "DOWN",
+      "louver_angle": 45
+    },
+    "FAN": {
+      "mode": "fan",
+      "temperature": 25,
+      "fan_speed": "low",
+      "display": "on",
+      "blinds_position": "MIDDLE",
+      "louver_angle": 30
+    },
+    "DRY": {
+      "mode": "dry",
+      "temperature": 23,
+      "fan_speed": "medium",
+      "display": "on",
+      "blinds_position": "UP",
+      "louver_angle": 40
+    },
+    "SLEEP": {
+      "mode": "sleep",
+      "temperature": 25,
+      "fan_speed": "low",
+      "display": "dimmed",
+      "blinds_position": "CLOSED",
+      "louver_angle": 20
+    }
+  }
+  

@@ -1,0 +1,116 @@
+{
+    "regular": {
+        "strength": "medium",
+        "temperature": 80,
+        "has_milk_froth": false,
+        "brewing_time": 5,
+        "water_level": "medium",
+        "ingredients": [
+            {"ingredient": "coffee", "amount": "2 tablespoons"},
+            {"ingredient": "water", "amount": "200 ml"}
+        ],
+        "comment": "עוצמת קפה בינונית, הטמפרטורה היא 80 מעלות צלזיוס, אין קצף חלב, זמן ההכנה הוא 5 דקות, עוצמת מים בינונית, מכיל קפה ומים."
+    },
+    "espresso": {
+        "strength": "strong",
+        "temperature": 90,
+        "has_milk_froth": false,
+        "brewing_time": 2,
+        "water_level": "low",
+        "ingredients": [
+            {"ingredient": "coffee", "amount": "1 tablespoon"},
+            {"ingredient": "water", "amount": "50 ml"}
+        ],
+        "comment": "עוצמת קפה חזקה, הטמפרטורה היא 90 מעלות צלזיוס, אין קצף חלב, זמן ההכנה הוא 2 דקות, עוצמת מים נמוכה, מכיל קפה ומים."
+    },
+    "cappuccino": {
+        "strength": "medium",
+        "temperature": 85,
+        "has_milk_froth": true,
+        "brewing_time": 4,
+        "water_level": "medium",
+        "ingredients": [
+            {"ingredient": "coffee", "amount": "2 tablespoons"},
+            {"ingredient": "water", "amount": "150 ml"},
+            {"ingredient": "milk", "amount": "100 ml"}
+        ],
+        "comment": "עוצמת קפה בינונית, הטמפרטורה היא 85 מעלות צלזיוס, כולל קצף חלב, זמן ההכנה הוא 4 דקות, עוצמת מים בינונית, מכיל קפה, מים, חלב."
+    },
+    "latte": {
+        "strength": "light",
+        "temperature": 75,
+        "has_milk_froth": true,
+        "brewing_time": 5,
+        "water_level": "high",
+        "ingredients": [
+            {"ingredient": "coffee", "amount": "1 tablespoon"},
+            {"ingredient": "water", "amount": "150 ml"},
+            {"ingredient": "milk", "amount": "200 ml"}
+        ],
+        "comment": "עוצמת קפה קלה, הטמפרטורה היא 75 מעלות צלזיוס, כולל קצף חלב, זמן ההכנה הוא 5 דקות, עוצמת מים גבוהה, מכיל קפה, מים וחלב."
+    },
+    "americano": {
+        "strength": "medium",
+        "temperature": 85,
+        "has_milk_froth": false,
+        "brewing_time": 3,
+        "water_level": "high",
+        "ingredients": [
+            {"ingredient": "coffee", "amount": "1 tablespoon"},
+            {"ingredient": "water", "amount": "250 ml"}
+        ],
+        "comment": "עוצמת קפה בינונית, הטמפרטורה היא 85 מעלות צלזיוס, אין קצף חלב, זמן ההכנה הוא 3 דקות, עוצמת מים גבוהה, מכיל קפה ומים."
+    },
+    "macchiato": {
+        "strength": "strong",
+        "temperature": 90,
+        "has_milk_froth": true,
+        "brewing_time": 3,
+        "water_level": "low",
+        "ingredients": [
+            {"ingredient": "coffee", "amount": "1 tablespoon"},
+            {"ingredient": "water", "amount": "50 ml"},
+            {"ingredient": "milk", "amount": "30 ml"}
+        ],
+        "comment": "עוצמת קפה חזקה, הטמפרטורה היא 90 מעלות צלזיוס, כולל קצף חלב, זמן ההכנה הוא 3 דקות, עוצמת מים נמוכה, מכיל קפה, מים וקצף חלב."
+    },
+    "mocha": {
+        "strength": "medium",
+        "temperature": 80,
+        "has_milk_froth": true,
+        "brewing_time": 6,
+        "water_level": "medium",
+        "ingredients": [
+            {"ingredient": "coffee", "amount": "2 tablespoons"},
+            {"ingredient": "water", "amount": "150 ml"},
+            {"ingredient": "milk", "amount": "100 ml"},
+            {"ingredient": "chocolate", "amount": "1 tablespoon"}
+        ],
+        "comment": "עוצמת קפה בינונית, הטמפרטורה היא 80 מעלות צלזיוס, כולל קצף חלב, זמן ההכנה הוא 6 דקות, עוצמת מים בינונית, מכיל קפה, מים, חלב ושוקולד."
+    },
+    "ristretto": {
+        "strength": "strong",
+        "temperature": 92,
+        "has_milk_froth": false,
+        "brewing_time": 2,
+        "water_level": "very low",
+        "ingredients": [
+            {"ingredient": "coffee", "amount": "1 tablespoon"},
+            {"ingredient": "water", "amount": "25 ml"}
+        ],
+        "comment": "עוצמת קפה חזקה מאוד, הטמפרטורה היא 92 מעלות צלזיוס, אין קצף חלב, זמן ההכנה הוא 2 דקות, עוצמת מים נמוכה מאוד, מכיל קפה ומים."
+    },
+    "flat_white": {
+        "strength": "medium",
+        "temperature": 85,
+        "has_milk_froth": true,
+        "brewing_time": 4,
+        "water_level": "medium",
+        "ingredients": [
+            {"ingredient": "coffee", "amount": "2 tablespoons"},
+            {"ingredient": "water", "amount": "150 ml"},
+            {"ingredient": "milk", "amount": "100 ml"}
+        ],
+        "comment": "עוצמת קפה בינונית, הטמפרטורה היא 85 מעלות צלזיוס, כולל קצף חלב, זמן ההכנה הוא 4 דקות, עוצמת מים בינונית, מכיל קפה, מים וחלב."
+    }
+}

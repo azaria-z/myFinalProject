@@ -1,0 +1,91 @@
+{
+  "living room": {
+    "light": {
+      "state": {
+        "value": "false",
+        "last_updated": "2025-06-05T10:00:00",
+        "updated_by": "automation"
+      },
+      "color": {
+        "value": "white",
+        "laupdated_byst_updated": "2025-06-05T10:00:00",
+        "updated_by": "automation"
+      },
+      "brightness": {
+        "value": 50,
+        "last_updated": "2025-06-05T10:00:00",
+        "updated_by": "automation"
+      }
+    },
+    "air conditioner": {
+      "state": {
+        "value": "off",
+        "last_updated": "2025-06-08T17:28:03.551792",
+        "updated_by": "user"
+      },
+      "temperature": {
+        "value": "24",
+        "last_updated": "2025-06-08T17:28:45.253633",
+        "updated_by": "user"
+      },
+      "fan_speed": {
+        "value": "medium",
+        "last_updated": "2025-06-07T08:00:00",
+        "updated_by": "user"
+      },
+      "mode": {
+        "value": "cool",
+        "last_updated": "2025-06-08T16:20:00.108865",
+        "updated_by": "user"
+      },
+      "display": {
+        "value": "off",
+        "last_updated": "2025-06-07T08:00:00",
+        "updated_by": "user"
+      },
+      "louver_angle": {
+        "value": "45",
+        "last_updated": "2025-06-07T08:00:00",
+        "updated_by": "user"
+      },
+      "blinds_position": {
+        "value": "open",
+        "last_updated": "2025-06-07T08:00:00",
+        "updated_by": "user"
+      }
+    
+    },
+    "coffee machine": {
+      "state": {
+        "value": "off",
+        "last_updated": "2025-06-05T10:00:00",
+        "updated_by": "automation"
+      },
+      "water": {
+        "value": 50,
+        "last_updated": "2025-06-05T10:00:00",
+        "updated_by": "automation"
+      },
+      "coffee": {
+        "value": 30,
+        "last_updated": "2025-06-05T10:00:00",
+        "updated_by": "automation"
+      },
+      "sugar": {
+        "value": 10,
+        "last_updated": "2025-06-05T10:00:00",
+        "updated_by": "automation"
+      },
+      "milk": {
+        "value": 20,
+        "last_updated": "2025-06-05T10:00:00",
+        "updated_by": "automation"
+      },
+      "chocolate": {
+        "value": 5,
+        "last_updated": "2025-06-05T10:00:00",
+        "updated_by": "automation"
+      }
+    }
+  }
+}

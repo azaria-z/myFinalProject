@@ -1,0 +1,25 @@
+color ,color
+red ,color
+green ,color
+blue ,color
+yellow ,color
+white ,color
+purple ,color
+orange ,color
+brightness, brightness
+brightness ,brightness
+low ,brightness
+bright, brightness
+medium ,brightness
+high ,brightness
+state ,state
+on ,state
+off ,state
+statuse ,state
+status ,state
+working ,state
+not working ,state
+turned on ,state
+turned off ,state
+active ,state
+name , name

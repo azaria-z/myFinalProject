@@ -1,0 +1,48 @@
+  name: air coonditioner
+  actions:
+      turn_off:
+        URL:  http://localhost:{port}/CM/state
+        method: POST
+        params:
+          state: false
+      turn_on:
+        URL: http://localhost:{port}/CM/state
+        method: POST
+        params:
+          state: true
+
+      add_ingredient:
+        URL: http://localhost:{port}/CM/ingredient/increase
+        method: POST
+        params:
+          ingredient: ingredient
+          amount: 0
+
+      reduce_ingredient:
+        URL: http://localhost:{port}/CM/ingredient/decrease
+        method: POST
+        params:
+          ingredient: ingredient
+          amount: 0
+
+      make_coffee:
+        URL: http://localhost:{port}/CM/make_coffee
+        method: POST
+        params:
+          coffee: null
+        
+      get_coffeeType:
+        URL: http://localhost:{port}/CM/coffee/types
+        method: GET
+      
+      get_ingredientCoffee:
+        URL: http://localhost:{port}/CM/{coffee}/ingredients
+        method: GET
+
+      get_ingredientsStatus:
+        URL: http://localhost:{port}/CM/ingredients
+        method: GET
+
+      get_ingredient:
+        URL: http://localhost:{port}/CM/ingredient/{ingredient}
+        method: GET

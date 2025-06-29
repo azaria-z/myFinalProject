@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>מכונת קפה חכמה</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 40px;
+        }
+        .card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            display: inline-block;
+            min-width: 300px;
+            text-align: right;
+        }
+        h1 {
+            color: #4A4A4A;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 8px;
+            font-size: 16px;
+            border-bottom: 1px solid #eeeeee;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .loading {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>☕ ברוך הבא למכונת הקפה החכמה</h1>
+
+    <div class="card">
+        <h2>מצב המרכיבים:</h2>
+        <div id="statusDiv" class="loading">טוען נתונים...</div>
+        <div id="statusDiv"></div>
+        <button onclick="location.reload()">רענן</button>
+
+    </div>
+
+    <script>
+        async function loadStatus() {
+            const statusDiv = document.getElementById("statusDiv");
+            statusDiv.innerHTML = "טוען נתונים...";
+
+            try {
+                const [ingredientsRes, stateRes] = await Promise.all([
+                    fetch('/CM/ingredients_JSON'),
+                    fetch('/CM/state')
+                    // fetch('/CM/water')
+                ]);
+
+                const ingredients = await ingredientsRes.json();
+                const state = await stateRes.json();
+
+                let html = "<ul>";
+                for (const [name, data] of Object.entries(ingredients)) {
+                    html += `<li><strong>${name}</strong>: ${data.amount} / ${data.copacity} units</li>`;
+                }
+                html += `<li><strong>מצב</strong>: ${state.state}</li>`;
+                html += "</ul>";
+            
+                statusDiv.innerHTML = html;
+
+            } catch (error) {
+                console.error("שגיאה בטעינת הנתונים:", error);
+                statusDiv.innerHTML = "<p>שגיאה בטעינת הנתונים.</p>";
+            }
+
+        }
+
+        window.onload = loadStatus;
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <title>מכונת קפה חכמה ☕</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+        body {
+            font-family: 'Varela Round', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: right;
+            direction: rtl;
+            position: relative;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 28px;
+            color: #6b4f4f;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            font-weight: 600;
+            font-size: 22px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0c097;
+            padding-bottom: 6px;
+            color: #7a5c58;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+        }
+
+        li {
+            font-size: 17px;
+            padding: 10px 15px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            background: #f9f4f0;
+            box-shadow: inset 3px 3px 6px #e3d6cf, inset -3px -3px 6px #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #5a3e3a;
+            font-weight: 600;
+        }
+
+        li strong {
+            color: #b3631d;
+        }
+
+        .water-level {
+            font-size: 16px;
+            color: #1f7a8c;
+            font-weight: 700;
+        }
+
+        button {
+            background-color: #c48f65;
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            font-size: 17px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 8px 15px rgba(196, 143, 101, 0.4);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        button:hover {
+            background-color: #a56e40;
+            box-shadow: 0 12px 20px rgba(165, 110, 64, 0.6);
+        }
+
+        .loading {
+            color: #9a8f8f;
+            font-style: italic;
+            font-weight: 600;
+            text-align: center;
+            padding: 25px 0;
+        }
+
+        .error {
+            color: #d9534f;
+            font-weight: 700;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>☕ ברוך הבא למכונת הקפה החכמה</h1>
+        <h2>מצב המרכיבים</h2>
+        <div id="statusDiv" class="loading">טוען נתונים...</div>
+        <button onclick="loadStatus()">רענן</button>
+    </div>
+
+<script>
+    async function loadStatus() {
+        const statusDiv = document.getElementById("statusDiv");
+        statusDiv.className = 'loading';
+        statusDiv.textContent = "טוען נתונים...";
+
+        try {
+            const [ingredientsRes, waterRes] = await Promise.all([
+                fetch('/ingredients_JSON'),
+                fetch('/water')
+            ]);
+
+            if (!ingredientsRes.ok || !waterRes.ok) throw new Error("תגובה שגויה מהשרת");
+
+            const ingredients = await ingredientsRes.json();
+            const water = await waterRes.json();
+
+            let html = "<ul>";
+            for (const [name, data] of Object.entries(ingredients)) {
+                html += `<li><strong>${name}</strong><span>${data.amount} / ${data.copacity} גרם</span></li>`;
+            }
+            html += `<li class="water-level"><strong>מים</strong><span>${water.water_level} מ"ל</span></li>`;
+            html += "</ul>";
+
+            statusDiv.innerHTML = html;
+            statusDiv.className = ""; // מסירים את המחלקה loading
+
+        } catch (error) {
+            console.error("שגיאה בטעינת הנתונים:", error);
+            statusDiv.className = "error";
+            statusDiv.textContent = "שגיאה בטעינת הנתונים. נסה שוב.";
+        }
+    }
+
+    window.onload = loadStatus;
+</script>
+
+</body>
+</html>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
